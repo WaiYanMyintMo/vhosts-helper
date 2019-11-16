@@ -8,6 +8,8 @@ with open('config.txt', 'r') as configBook:
     OutputFolder = configBook[0].strip('\n')
     vhost_path = configBook[1].strip('\n')
     host_path = configBook[2].strip('\n')
+    lookup = configBook[3].strip('\n')
+    vhost_lookup = configBook[4].strip('\n')
 print(f'Variables in template are {SvrName} and {Dir}.')
 
 InputSvrName = input('Enter server name (example.com): ')
@@ -28,18 +30,48 @@ print(f'Replacing {SvrName} with {InputSvrName} and {Dir} with {InputDir}')
 TemplateContent = TemplateContent.replace(SvrName, InputSvrName)
 TemplateContent = TemplateContent.replace(Dir, InputDir)
 
+## Extra Variables Start
+with open('VarSet.txt', 'r') as VarSetBook:
+    lines = VarSetBook.readlines
+    for i in lines:
+        pass
+
+
+
+
+
+
+
+## Extra Variables Stop
 print(f'....................\n\n {TemplateContent}')
 print('\n.....................')
 while True:
-    Directness = input('Do you want to insert vhost directly? (y/n) :').lower()
+    Directness = input('Do you want to insert directly into httpd-vhost.conf file? (y/n) :').lower()
     if Directness == 'y' or Directness == 'n':
         break
 if Directness == 'y':
     with open(vhost_path, 'r+') as vhost_book:
-        og_data = vhost_book.read()
-        final_data = '\n\n' + TemplateContent
-        vhost_book.write(final_data)
-    print('Inserting done')
+        if vhost_lookup == '':
+            og_data = vhost_book.read()
+            final_data = '\n\n' + TemplateContent
+            vhost_book.write(final_data)
+        else:
+            vhost_readlines = vhost_book.readlines()
+            num = 0
+            while num < vhost_readlines.__len__ - 1:
+                if vhost_lookup in vhost_readlines[num]:
+                    vindex = num
+                    break
+                num += 1
+            try:
+                print(vindex)
+            except Exception:
+                print('ERROR : vLOOKUP not found.')
+    with open(vhost_path, 'w+') as vhost_book:
+        new_data = '\n\n' + TemplateContent
+        vhost_readlines.insert(vindex + 1, new_data)
+        vhost_book.writelines(vhost_readlines)
+    print("VHosts file updated")
     while True:
         backup = input(f'Do you also want a copy in {OutputFolder} folder? (y/n) :').lower()
         if backup == 'y' or backup == 'n':
@@ -55,14 +87,20 @@ else:
 if input('Do you want to add host entry? (y/ANYTHING) :').lower() == 'y':
     host_book = open(host_path, 'r+')
     host_readlines = host_book.readlines()
-    lookup = r'########## custom url for xampp localhost ##############'
     num = 0
-    while num < 50:
-        if lookup in host_readlines[num]:
-            index = num
-            break
-        num += 1
-    host_book.close()
+    if lookup != '':
+        while num < host_readlines.__len__ - 1:
+            if lookup in host_readlines[num]:
+                index = num
+                break
+            num += 1
+        host_book.close()
+        try:
+            print(index)
+        except Exception:
+            print('ERROR : LOOKUP not found.')
+    else:
+        index = -2
 
     with open(f'{host_path}\\hosts', 'w+') as host_book:
         new_data = f'127.0.0.1 {InputSvrName}\n'

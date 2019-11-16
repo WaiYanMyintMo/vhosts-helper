@@ -5,15 +5,22 @@ know what you can touch and not touch.
 What this program is - This program is to ease and automate the 
 process of adding (not delete yet) hosts and vhosts (apache) entries.
 
-In app folder, you can see main.py - the file you have to run.
+In app folder, you can see 
+main.py - the file you have to run.
 Template.txt - the template used for new vhosts entries.
-VarSet.txt - configuration for variables used in template.txt
+MainVarSet.txt - template variables but only for SvrName and Dir. 
+    Don't add more variables here.
+VarSet.txt - configuration for variables used in template.txt.
+    Split from MainVarSet for customizability. add more variables here.
+config.txt - Line 1 is for output folder. Line 2 for httpd-vhosts.conf path.
+    Line 3 is for hosts path. and Line 4 is where in the hosts file you want to insert it *AFTER*.
+        (not support line number, must be a phrase which is then matched using 'in' operator)
+        Only the first one counts. Leave blank for end of file
 
 Let me explain how template.txt works.
 In template .txt, I have set default variables to be SvrName and Dir1 
 (Dir conflicts with Directory).
 In VarSet.txt, I identify them as SvrName and Dir1, line 1 and 2 respectively.
-You can edit them as you wish. You can add more variables if you want.
-
-
+You can edit them as you wish. 
+You can add more variables if you want in
 
