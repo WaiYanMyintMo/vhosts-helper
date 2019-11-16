@@ -106,7 +106,6 @@ if input('Do you want to add host entry? (y/ANYTHING) :').lower() == 'y':
             host_book.writelines(host_readlines)
     else:
         with open(host_path, 'a') as host_book:
-            print(host_book.readlines()[-1])
             host_book.write(new_data)
 
 
