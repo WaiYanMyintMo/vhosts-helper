@@ -1,0 +1,3 @@
+SvrName
+Dir1
+Output
