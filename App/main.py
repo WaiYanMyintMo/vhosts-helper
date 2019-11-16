@@ -5,6 +5,7 @@ SvrName = varSetContent[0].strip('\n')
 Dir = varSetContent[1].strip('\n')
 
 with open('config.txt', 'r') as configBook:
+    configBook = configBook.readlines()
     OutputFolder = configBook[0].strip('\n')
     vhost_path = configBook[1].strip('\n')
     host_path = configBook[2].strip('\n')
@@ -32,7 +33,7 @@ TemplateContent = TemplateContent.replace(Dir, InputDir)
 
 ## Extra Variables Start
 with open('VarSet.txt', 'r') as VarSetBook:
-    lines = VarSetBook.readlines
+    lines = VarSetBook.readlines()
     for i in lines:
         pass
 
@@ -51,12 +52,12 @@ while True:
         break
 if Directness == 'y':
     with open(vhost_path, 'r+') as vhost_book:
+        vhost_readlines = vhost_book.readlines()
         if vhost_lookup == '':
             og_data = vhost_book.read()
             final_data = '\n\n' + TemplateContent
             vhost_book.write(final_data)
         else:
-            vhost_readlines = vhost_book.readlines()
             num = 0
             while num < vhost_readlines.__len__ - 1:
                 if vhost_lookup in vhost_readlines[num]:
@@ -67,10 +68,10 @@ if Directness == 'y':
                 print(vindex)
             except Exception:
                 print('ERROR : vLOOKUP not found.')
-    with open(vhost_path, 'w+') as vhost_book:
-        new_data = '\n\n' + TemplateContent
-        vhost_readlines.insert(vindex + 1, new_data)
-        vhost_book.writelines(vhost_readlines)
+            with open(vhost_path, 'w+') as vhost_book:
+                new_data = '\n\n' + TemplateContent
+                vhost_readlines.insert(vindex + 1, new_data)
+                vhost_book.writelines(vhost_readlines)
     print("VHosts file updated")
     while True:
         backup = input(f'Do you also want a copy in {OutputFolder} folder? (y/n) :').lower()
@@ -102,7 +103,7 @@ if input('Do you want to add host entry? (y/ANYTHING) :').lower() == 'y':
     else:
         index = -2
 
-    with open(f'{host_path}\\hosts', 'w+') as host_book:
+    with open(host_path, 'w+') as host_book:
         new_data = f'127.0.0.1 {InputSvrName}\n'
         host_readlines.insert(index + 1, new_data)
         host_book.writelines(host_readlines)
