@@ -89,6 +89,7 @@ if input('Do you want to add host entry? (y/ANYTHING) :').lower() == 'y':
     host_book = open(host_path, 'r+')
     host_readlines = host_book.readlines()
     num = 0
+    new_data = f'127.0.0.1 {InputSvrName}\n'
     if lookup != '':
         while num < host_readlines.__len__ - 1:
             if lookup in host_readlines[num]:
@@ -100,13 +101,14 @@ if input('Do you want to add host entry? (y/ANYTHING) :').lower() == 'y':
             print(index)
         except Exception:
             print('ERROR : LOOKUP not found.')
+        with open(host_path, 'w+') as host_book:
+            host_readlines.insert(index + 1, new_data)
+            host_book.writelines(host_readlines)
     else:
-        index = -2
+        with open(host_path, 'a') as host_book:
+            host_book.write(new_data)
 
-    with open(host_path, 'w+') as host_book:
-        new_data = f'127.0.0.1 {InputSvrName}\n'
-        host_readlines.insert(index + 1, new_data)
-        host_book.writelines(host_readlines)
+
     print("Hosts file updated")
 
 print('ALL DONE, have a great time!')
