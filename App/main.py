@@ -91,7 +91,7 @@ if input('Do you want to add host entry? (y/ANYTHING) :').lower() == 'y':
     num = 0
     new_data = f'\n127.0.0.1 {InputSvrName}\n'
     if lookup != '':
-        while num < host_readlines.__len__ - 1:
+        while num < host_readlines.__len__() - 1:
             if lookup in host_readlines[num]:
                 index = num
                 break
