@@ -1,11 +1,13 @@
-varSetBook = open('VarSet.txt', 'r')
+varSetBook = open('MainVarSet.txt', 'r')
 varSetContent = varSetBook.readlines()
 varSetBook.close()
 SvrName = varSetContent[0].strip('\n')
 Dir = varSetContent[1].strip('\n')
-OutputFolder = varSetContent[2].strip('\n')
-vhost_path = varSetContent[3].strip('\n')
-host_path = varSetContent[4].strip('\n')
+
+with open('config.txt', 'r') as configBook:
+    OutputFolder = configBook[0].strip('\n')
+    vhost_path = configBook[1].strip('\n')
+    host_path = configBook[2].strip('\n')
 print(f'Variables in template are {SvrName} and {Dir}.')
 
 InputSvrName = input('Enter server name (example.com): ')
