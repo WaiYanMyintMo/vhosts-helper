@@ -4,6 +4,8 @@ varSetBook.close()
 SvrName = varSetContent[0].strip('\n')
 Dir = varSetContent[1].strip('\n')
 OutputFolder = varSetContent[2].strip('\n')
+vhost_path = varSetContent[3].strip('\n')
+host_path = varSetContent[4].strip('\n')
 print(f'Variables in template are {SvrName} and {Dir}.')
 
 InputSvrName = input('Enter server name (example.com): ')
@@ -31,8 +33,7 @@ while True:
     if Directness == 'y' or Directness == 'n':
         break
 if Directness == 'y':
-    vhost_path = r"C:\xampp\apache\conf\extra"
-    with open(f'{vhost_path}\\httpd-vhosts.conf', 'r+') as vhost_book:
+    with open(vhost_path, 'r+') as vhost_book:
         og_data = vhost_book.read()
         final_data = '\n\n' + TemplateContent
         vhost_book.write(final_data)
@@ -50,8 +51,7 @@ else:
     open(f'../{OutputFolder}/{InputSvrName}.txt', 'w+').write(TemplateContent)
 
 if input('Do you want to add host entry? (y/ANYTHING) :').lower() == 'y':
-    host_path = r"C:\Windows\System32\drivers\etc"
-    host_book = open(f'{host_path}\\hosts', 'r+')
+    host_book = open(host_path, 'r+')
     host_readlines = host_book.readlines()
     lookup = r'########## custom url for xampp localhost ##############'
     num = 0
