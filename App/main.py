@@ -89,7 +89,7 @@ if input('Do you want to add host entry? (y/ANYTHING) :').lower() == 'y':
     host_book = open(host_path, 'r+')
     host_readlines = host_book.readlines()
     num = 0
-    new_data = f'127.0.0.1 {InputSvrName}\n'
+    new_data = f'\n127.0.0.1 {InputSvrName}\n'
     if lookup != '':
         while num < host_readlines.__len__ - 1:
             if lookup in host_readlines[num]:
