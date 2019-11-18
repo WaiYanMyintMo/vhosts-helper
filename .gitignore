@@ -2,3 +2,4 @@ Output/*.txt
 .vscode/
 .idea/
 venv/
+__pycache__/
