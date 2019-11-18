@@ -11,6 +11,7 @@ Append host and template defaultly.
 
 --Nice to have--
 Custom Templating engine
+defaults and cli interface
 
 --Dream Specs--
 
@@ -19,6 +20,10 @@ Able to delete a block of text
 where they want it to be can be "match by words (before, after)", by line number, or front or end of file. with config
 Hosts and vhosts path is editable with path config
 Template is supported and can be edited with a template config
+
+-- Interfaces --
+Input : SourceCode -> Config File -> CLI App
+Output : Output DIR -> CLI App
 
 //Must Have Outline
 Host and Vhost assigned at top of file.
