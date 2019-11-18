@@ -7,7 +7,7 @@ keyword_config: #These settings are global to all templates, use wisely
   PortNumber1: '80'
 editor_config: # All must be strings so use the quotes
   ServerName: 'Example1.com' ######## You are looking for this
-  DocumentRoot: 'D:\Example1' ######## And this
+  DocumentRoot: 'D:\Example1' ######## And this too
   HostsPath: 'C:\Windows\System32\drivers\etc\hosts'
   VhostsPath: 'C:\xampp\apache\conf\extra\httpd-vhosts.conf'
 template_config:
