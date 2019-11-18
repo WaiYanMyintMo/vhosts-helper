@@ -1,3 +1,4 @@
 Output/*.txt
 .vscode/
 .idea/
+venv/

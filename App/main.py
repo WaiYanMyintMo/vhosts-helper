@@ -7,24 +7,25 @@
 HostsPath = 'C:\\Windows\\System32\\drivers\\etc\\hosts'
 VhostsPath = 'C:\\xampp\\apache\\conf\\extra\\httpd-vhosts.conf'
 ServerName = 'testing1.com'
-DocumentRoot = 'D:\\Testing\\'
+DocumentRoot = 'D:\\Testing1\\'
 
 
-def replace(Data, Old, New):
-    return Data.replace(Old, New)
+def replace(data, old, new):
+    return data.replace(old, new)
 
 
-def readReplace(Name, Old, New):
-    with open(Name, 'r') as book:
-        return book.read().replace(Old, New)
+def read_replace(name, old, new):
+    with open(name, 'r') as book:
+        return book.read().replace(old, new)
 
 
-def append(Name, Data):
-    with open(Name, 'a') as book:
-        book.write(Data)
+def append(name, data):
+    with open(name, 'a') as book:
+        book.write(data)
 
 
 def main():
+    pass
 
 
 main()
