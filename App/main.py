@@ -24,8 +24,16 @@ def append(name, data):
         book.write(data)
 
 
+def update(filename):
+    if filename == 'hosts':
+        path = HostsPath
+    elif filename == 'vhosts':
+        path = VhostsPath
+
+
+
 def main():
-    pass
+    update('hosts')
 
 
 main()
