@@ -23,10 +23,13 @@ def get_keyword_config(config: dict) -> dict:
     keyword_config = get_raw_keyword_config(config)
     for i in keyword_config.keys():
         x = keyword_config.get(i)
-        if x[0] == '$':
-            u = x[1:]
-            if u in editor_config.keys():
-                keyword_config[i] = editor_config[u]
+        if len(x) > 0:
+            if x[0] == '$':
+                u = x[1:]
+                if u in editor_config.keys():
+                    keyword_config[i] = editor_config[u]
+                else:  # Dunno what I did, but this handles the $
+                    keyword_config[i] = u  #without any error
     return keyword_config
 
 
