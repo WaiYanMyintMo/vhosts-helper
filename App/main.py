@@ -13,4 +13,3 @@ editor_config = {'PathName': 'HostsPath',
                  'UpdateLocation': '',
                  'UnspecifiedLocationTypes': '"End", "Start"',
                  'UnspecifiedLocation': 'End'}
-
