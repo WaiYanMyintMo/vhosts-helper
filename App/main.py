@@ -14,13 +14,8 @@ def replace(Data, Old, New):
     return Data.replace(Old, New)
 
 
-def openBook(Name):
-    book = open(Name, 'r+')
-    return book
-
-
 def readReplace(Name, Old, New):
-    with openBook(Name) as book:
+    with open(Name, 'r') as book:
         return book.read().replace(Old, New)
 
 
