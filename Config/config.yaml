@@ -12,6 +12,11 @@ editor_config: # All must be strings so use the quotes
   HostsPath: 'C:\Windows\System32\drivers\etc\hosts'
   VhostsPath: 'C:\xampp\apache\conf\extra\httpd-vhosts.conf'
   PortNum: '80' ### Maybe this
-template_path:
-  HostsTemplatePath: '..\Config\'
+template_config:
+  HostsTemplatePath: '..\Config\hosts_template.txt'
+  VhostsTemplatePath: '..\Config\vhosts_template.txt'
+  UpdateType : 'append'
+  UpdateOption : '-'
+  #For append type, use '-' for bottom, '+' for top
+  #For string type, use '-' to insert below, '+' for above
 ...

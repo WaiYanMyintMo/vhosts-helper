@@ -33,12 +33,19 @@ def get_keyword_config(config: dict) -> dict:
     return keyword_config
 
 
+def get_template_config(config: dict) -> dict:
+    template_path = config['template_config']
+    return template_path
+
+
 def configurer(option: str):
     config = get_config()
     if option == 'editor':
         return get_editor_config(config)
     elif option == 'keyword':
         return get_keyword_config(config)
+    elif option == 'template':
+        return get_template_config(config)
     elif option == 'config':
         return config
     else:

@@ -2,9 +2,9 @@ def replace(data: str, old: str, new:str) -> str:
     return data.replace(old, new)
 
 
-def read_replace(name: str, old: str, new: str) -> str:
+def read(name: str) -> str:
     with open(name, 'r') as book:
-        return book.read().replace(old, new)
+        return book.read()
 
 
 def append(name: str, data: str):
@@ -12,9 +12,10 @@ def append(name: str, data: str):
         book.write(data)
 
 
-def update(path: str, data: str, option: str = 'A-') -> None:
-    if option == 'A-':
-        append(path, data)
+def edit(path: str, data: str, update_type: str = 'append', update_option: str = '-') -> None:
+    if update_type == 'append':
+        if update_option == '-':
+            append(path, data)
 
 
 def main():

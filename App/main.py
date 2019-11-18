@@ -4,10 +4,27 @@
 # Function for opening file, reading and returning replaced data.
 # Function for appending data to a file.
 from configurer import configurer
+from themer import theme
+from editor import edit,read
+
+
+def get_template_config():
+    template_config = configurer('template')
+    hosts = read(template_config['HostsTemplatePath'])
+    vhosts = read(template_config['VhostsTemplatePath'])
+    update_type = template_config['UpdateType']
+    update_option = template_config['UpdateOption']
+    return hosts, vhosts, update_type, update_option
 
 
 def main():
-    pass
+    edit_path = '..\\output\\amhelib.com.txt'
+    hosts_template, vhosts_template, update_type, update_option = get_template_config()
+    keyword_config = configurer('keyword')
+    data = theme(vhosts_template, keyword_config)
+    print(data)
+    edit(edit_path, data, update_type, update_option)
+
 
 
 if __name__ == '__main__':
