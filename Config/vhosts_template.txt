@@ -1,5 +1,7 @@
-# Custom vhost for SvrName
-<VirtualHost *:80>
+
+
+# Custom apache vhost for SvrName
+<VirtualHost *:PortNumber1>
     ServerName SvrName
     DocumentRoot Dir1
     <Directory Dir1>
