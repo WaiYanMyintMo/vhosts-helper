@@ -1,3 +1,13 @@
-keyword:
-  keyword_list:
-    -
+---
+# Theming / Template Options
+keyword_config:
+  SvrName: '$ServerName' # $ refers to edition config's children
+  Dir1: '$DocumentRoot' # Use $$ to escape the $
+  s : 'vroom'
+editor_config:
+  ServerName: 'Example1.com'
+  DocumentRoot: 'D:\Example1'
+  HostsPath: 'C:\Windows\System32\drivers\etc\hosts'
+  VhostsPath: 'C:\xampp\apache\conf\extra\httpd-vhosts.conf'
+  $ : '$' # Do Not Edit
+...
