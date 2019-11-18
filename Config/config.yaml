@@ -4,11 +4,10 @@ keyword_config: #These settings are global, use wisely
   SvrName: '$ServerName' # $ refers to edition config's children
   Dir1: '$DocumentRoot' # Use $$ to escape the $, don't edit these two
   ExampleTemplate : 'Changed Phrase' # Check template and edit to suit your needs
-  PORTnum: '$PortNum'
+  PortNumber1: '80'
 editor_config: # All must be strings so use the quotes
   ServerName: 'Example1.com' ######## You are looking for this
   DocumentRoot: 'D:\Example1' ######## And this
-  PortNum: '80' ### Maybe this
   HostsPath: 'C:\Windows\System32\drivers\etc\hosts'
   VhostsPath: 'C:\xampp\apache\conf\extra\httpd-vhosts.conf'
 template_config:
