@@ -4,3 +4,4 @@ Output/*.txt
 venv/
 __pycache__/
 planning.txt
+/*.txt
