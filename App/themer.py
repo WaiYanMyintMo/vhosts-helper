@@ -1,5 +1,5 @@
 # Replace function
-def replace(template_local: str, keyword_list_local: list, keyword_config_local: dict):
+def theme(template_local: str, keyword_list_local: list, keyword_config_local: dict) -> str:
     for keyword in keyword_list_local:
         config = keyword_config_local[keyword]
         template_local = template_local.replace(keyword, config)
@@ -20,7 +20,7 @@ if __name__ == "__main__":
                       'Dir1': r'D:\Example1'}
     # We got the template string and it is "i love my SvrName located in Dir1 Directory"
     template = "i love my SvrName located in Dir1 Directory"
-    output = replace(template, keyword_list, keyword_config)
+    output = theme(template, keyword_list, keyword_config)
 
     # Test Case
     expected = r"i love my Example1.com located in D:\Example1 Directory"

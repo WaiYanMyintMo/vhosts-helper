@@ -4,30 +4,35 @@
 # Function for opening file, reading and returning replaced data.
 # Function for appending data to a file.
 
-HostsPath = 'C:\\Windows\\System32\\drivers\\etc\\hosts'
-VhostsPath = 'C:\\xampp\\apache\\conf\\extra\\httpd-vhosts.conf'
-ServerName = 'testing1.com'
-DocumentRoot = 'D:\\Testing1\\'
+config = {'PathName': 'HostsPath',
+          'HostsPath': 'C:\\Windows\\System32\\drivers\\etc\\hosts',
+          'VhostsPath': 'C:\\xampp\\apache\\conf\\extra\\httpd-vhosts.conf',
+          'ServerName': 'testing1.com',
+          'DocumentRoot': 'D:\\Testing1\\',
+          'UpdateLocationType': '"",str',
+          'UpdateLocation': '',
+          'UnspecifiedLocationTypes': '"End", "Start"',
+          'UnspecifiedLocation': 'End'}
 
 
-def replace(data, old, new):
+def replace(data: str, old: str, new:str) -> str:
     return data.replace(old, new)
 
 
-def read_replace(name, old, new):
+def read_replace(name: str, old: str, new: str) -> str:
     with open(name, 'r') as book:
         return book.read().replace(old, new)
 
 
-def append(name, data):
+def append(name: str, data: str):
     with open(name, 'a') as book:
         book.write(data)
 
 
-def update(filename):
-    if filename == 'hosts':
+def update(config_local: dict) -> None:
+    if pathname == 'hosts':
         path = HostsPath
-    elif filename == 'vhosts':
+    elif pathname == 'vhosts':
         path = VhostsPath
 
 
