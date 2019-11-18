@@ -22,3 +22,9 @@ def readReplace(Name, Old, New):
 def append(Name, Data):
     with open(Name, 'a') as book:
         book.write(Data)
+
+
+def main():
+
+
+main()
