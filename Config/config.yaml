@@ -1,6 +1,6 @@
 ---
 # Theming / Template Options
-keyword_config: #These settings are global, use wisely
+keyword_config: #These settings are global to all templates, use wisely
   SvrName: '$ServerName' # $ refers to edition config's children
   Dir1: '$DocumentRoot' # Use $$ to escape the $, don't edit these two
   ExampleTemplate : 'Changed Phrase' # Check template and edit to suit your needs
@@ -13,8 +13,9 @@ editor_config: # All must be strings so use the quotes
 template_config:
   HostsTemplatePath: '..\Config\hosts_template.txt'
   VhostsTemplatePath: '..\Config\vhosts_template.txt'
-  UpdateType : 'append'
-  UpdateOption : '-'
+  UpdateType : 'append' #don't change this yet too
+  UpdateOption : '-' # Use only this now, other features not yet implemented
+  # haha, jk. I disabled it so changing it is useless. I don't trust you
   #For append type, use '-' for bottom, '+' for top
   #For string type, use '-' to insert below, '+' for above
 ...
