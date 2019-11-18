@@ -12,11 +12,9 @@ def append(name: str, data: str):
         book.write(data)
 
 
-def update(config_local: dict) -> None:
-    if pathname == 'hosts':
-        path = HostsPath
-    elif pathname == 'vhosts':
-        path = VhostsPath
+def update(path: str, data: str, option: str = 'A-') -> None:
+    if option == 'A-':
+        append(path, data)
 
 
 def main():

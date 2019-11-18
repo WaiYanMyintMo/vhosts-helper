@@ -1,13 +1,15 @@
 ---
 # Theming / Template Options
-keyword_config:
+keyword_config: #These settings are global, use wisely
   SvrName: '$ServerName' # $ refers to edition config's children
-  Dir1: '$DocumentRoot' # Use $$ to escape the $
+  Dir1: '$DocumentRoot' # Use $$ to escape the $, don't edit these two
   ExampleTemplate : 'Changed Phrase'
 editor_config:
   ServerName: 'Example1.com'
   DocumentRoot: 'D:\Example1'
   HostsPath: 'C:\Windows\System32\drivers\etc\hosts'
   VhostsPath: 'C:\xampp\apache\conf\extra\httpd-vhosts.conf'
+template_path:
+  HostsTemplatePath: '..\Config\
   $ : '$' # Do Not Edit
 ...
