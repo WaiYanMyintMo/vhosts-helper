@@ -17,8 +17,12 @@ def get_template_config():
     return hosts, vhosts, update_type, update_option
 
 
+def get_editor_config():
+    editor_config = configurer('editor')
+
+
+
 def main():
-    edit_path = '..\\output\\amhelib.com.txt'
     hosts_template, vhosts_template, update_type, update_option = get_template_config()
     keyword_config = configurer('keyword')
     data = theme(vhosts_template, keyword_config)
