@@ -3,3 +3,4 @@ Output/*.txt
 .idea/
 venv/
 __pycache__/
+planning.txt
