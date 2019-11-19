@@ -20,6 +20,7 @@ def edit(path: str, data: str, update_type: str = 'append', update_option: str =
 
 def output(path: str, data:str) -> None:
     with open(path, 'w+') as file:
+        data = '--Output--' + data
         file.write(data)
 
 

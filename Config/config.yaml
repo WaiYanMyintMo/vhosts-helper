@@ -14,7 +14,7 @@ editor_config: # All must be strings so use the quotes
   VhostsPath: 'C:\xampp\apache\conf\extra\httpd-vhosts.conf'
   EditIncludes: 'Both' # 'Hosts', 'Vhosts' or 'Both'
   SavesToOutput: 'True' #or 'False'
-  OutputPath: '..\Output\'
+  OutputPath: '..\Output\' #Output is overwritten if same server name
   ThisValuePointsTo: "This, haha. Use wisely, $$ to escape the first $"
 template_config:
   HostsTemplatePath: '..\Config\hosts_template.txt'
