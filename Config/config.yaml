@@ -9,7 +9,7 @@ keyword_config: #These settings are global to all templates, use wisely
   JustSoYouKnowThisFeautureExist100: '$ThisValuePointsTo'
 editor_config: # All must be strings so use the quotes
   ServerName: 'Example1.com' ######## You are looking for this
-  DocumentRoot: 'D:\Example1' ######## And this too
+  DocumentRoot: 'D:\Example1' ######## And this too, you can edit these
   HostsPath: 'C:\Windows\System32\drivers\etc\hosts'
   VhostsPath: 'C:\xampp\apache\conf\extra\httpd-vhosts.conf'
   EditIncludes: 'Both' # 'Hosts', 'Vhosts' or 'Both'
