@@ -12,8 +12,8 @@ def get_template_config() -> str:
     template_config = configurer('template')
     hosts_template_path = template_config['HostsTemplatePath']
     vhosts_template_path = template_config['VhostsTemplatePath']
-    update_type = template_config['UpdateType']
-    update_option = template_config['UpdateOption']
+    update_type = template_config['EditType']
+    update_option = template_config['EditOption']
     return hosts_template_path, vhosts_template_path, update_type, update_option
 
 
