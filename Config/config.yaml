@@ -2,19 +2,19 @@
 #!! Warning, you MUST run this script only from 'App' directory folder.
 # Theming / Template Options
 keyword_config: #These settings are global to all templates, use wisely
-  #SvrName: '$ServerName' # $ refers to edition config's children (Deprecated)
-  #Dir1: '$DocumentRoot' # Use $$ to escape the $, don't edit these two (deprecated)
-  SvrName: 'Example1.com'
-  Dir1: 'D:\Example1.com'
+  SvrName: '$ServerName' # $ refers to edition config's children
+  Dir1: '$DocumentRoot' # Use $$ to escape the $, don't edit these two
   ExampleTemplate : 'Changed Phrase' # Check template and edit to suit your needs
   PortNumber1: '80'
   JustSoYouKnowThisFeautureExist100: '$ThisValuePointsTo'
 editor_config: # All must be strings so use the quotes
-  #ServerName: 'Example1.com' ######## You are looking for this (Deprecated)
-  #DocumentRoot: 'D:\Example1' ######## And this too (Deprecated)
+  ServerName: 'Example1.com' ######## You are looking for this
+  DocumentRoot: 'D:\Example1' ######## And this too
   HostsPath: 'C:\Windows\System32\drivers\etc\hosts'
   VhostsPath: 'C:\xampp\apache\conf\extra\httpd-vhosts.conf'
   EditIncludes: 'Both' # 'Hosts', 'Vhosts' or 'Both'
+  SavesToOutput: 'True' #or 'False'
+  OutputPath: '..\Output\'
   ThisValuePointsTo: "This, haha. Use wisely, $$ to escape the first $"
 template_config:
   HostsTemplatePath: '..\Config\hosts_template.txt'

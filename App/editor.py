@@ -18,6 +18,11 @@ def edit(path: str, data: str, update_type: str = 'append', update_option: str =
             append(path, data)
 
 
+def output(path: str, data:str) -> None:
+    with open(path, 'w+') as file:
+        file.write(data)
+
+
 def main():
     book_path = '..\\Output\\amhelib.com.txt'
     edit(book_path, 'S', 'Vroom')
