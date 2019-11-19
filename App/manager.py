@@ -3,33 +3,11 @@
 # Server Name and DocumentRoot assigned at top of file.
 # Function for opening file, reading and returning replaced data.
 # Function for appending data to a file.
-from configurer import configurer
+from configurer import get_keyword_config_matched as get_keyword_config
+from configurer import get_editor_config_matched as get_editor_config
+from configurer import get_template_config_matched as get_template_config
 from themer import theme
 from editor import edit as edit_low, read, output
-
-
-def get_template_config() -> str:
-    template_config = configurer('template')
-    hosts_template_path = template_config['HostsTemplatePath']
-    vhosts_template_path = template_config['VhostsTemplatePath']
-    update_type = template_config['EditType']
-    update_option = template_config['EditOption']
-    return hosts_template_path, vhosts_template_path, update_type, update_option
-
-
-def get_editor_config() -> str:
-    editor_config = configurer('editor')
-    hosts_path = editor_config['HostsPath']
-    vhosts_path = editor_config['VhostsPath']
-    edit_includes = editor_config['EditIncludes']
-    saves_to_output = editor_config['SavesToOutput']
-    output_path = editor_config['OutputPath']
-    return hosts_path, vhosts_path, edit_includes, saves_to_output, output_path
-
-
-def get_keyword_config():
-    keyword_config = configurer('keyword')
-    return keyword_config
 
 
 def edit_hosts(hosts_path: str, hosts_template_path: str, keyword_config: dict,
@@ -56,7 +34,7 @@ def edit_main():
     # Get data from config
     hosts_template_path, vhosts_template_path, update_type, update_option = get_template_config()
 
-    hosts_path, vhosts_path, edit_includes, saves_to_output, output_path = get_editor_config()
+    hosts_path, vhosts_path, edit_includes, saves_to_output, output_path, server_name = get_editor_config()
 
     keyword_config = get_keyword_config()
 
@@ -73,7 +51,9 @@ def edit_main():
     if include_vhosts:
         vhosts_data = edit_vhosts(vhosts_path, vhosts_template_path, keyword_config, update_type='append', update_option='-')
     if saves_to_output:
-        output(output_path +)
+        output_path = output_path + server_name + '.txt'
+        output(output_path, hosts_data)
+        edit_low(output_path, vhosts_data)
         return hosts_data, vhosts_data
     else:
         return None

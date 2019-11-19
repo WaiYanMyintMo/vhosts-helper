@@ -52,6 +52,32 @@ def configurer(option: str):
         raise Exception
 
 
+def get_template_config_matched() -> str:
+    template_config = configurer('template')
+    hosts_template_path = template_config['HostsTemplatePath']
+    vhosts_template_path = template_config['VhostsTemplatePath']
+    update_type = template_config['EditType']
+    update_option = template_config['EditOption']
+    return hosts_template_path, vhosts_template_path, update_type, update_option
+
+
+def get_editor_config_matched() -> str:
+    editor_config = configurer('editor')
+    hosts_path = editor_config['HostsPath']
+    vhosts_path = editor_config['VhostsPath']
+    edit_includes = editor_config['EditIncludes']
+    saves_to_output = editor_config['SavesToOutput']
+    output_path = editor_config['OutputPath']
+    server_name = editor_config['ServerName']
+    return hosts_path, vhosts_path, edit_includes, saves_to_output, output_path, server_name
+
+
+def get_keyword_config_matched() -> dict:
+    keyword_config = configurer('keyword')
+    return keyword_config
+
+
+
 def main():
     option = 'keyword'
     x = configurer(option)
