@@ -4,8 +4,8 @@
 keyword_config: #These settings are global to all templates, use wisely
   #SvrName: '$ServerName' # $ refers to edition config's children (Deprecated)
   #Dir1: '$DocumentRoot' # Use $$ to escape the $, don't edit these two (deprecated)
-  SvrName: 'eatmyass.com'
-  Dir1: 'D:\eatmyass.com'
+  SvrName: 'Example1.com'
+  Dir1: 'D:\Example1.com'
   ExampleTemplate : 'Changed Phrase' # Check template and edit to suit your needs
   PortNumber1: '80'
   JustSoYouKnowThisFeautureExist100: '$ThisValuePointsTo'
