@@ -3,8 +3,15 @@ config_path = '..\\Config\\config.yaml'
 
 
 def get_config() -> dict:
-    with open(config_path, 'r') as file:
-        config = yaml.full_load(file)
+    try:
+        with open(config_path, 'r') as file:
+            config = yaml.full_load(file)
+    except FileNotFoundError:
+        print("\nCan't find config.yaml, are you sure you are running this from within App folder")
+        print("You didn't run it from the app folder. Didn't I warn you?")
+        input("Do you understand what happened? Press any key to exit program...\n")
+        import sys
+        sys.exit()
     return config
 
 
