@@ -18,10 +18,15 @@ def edit(path: str, data: str, update_type: str = 'append', update_option: str =
             append(path, data)
 
 
+def output(path: str, data:str) -> None:
+    with open(path, 'w+') as file:
+        data = '--Output--' + data
+        file.write(data)
+
+
 def main():
     book_path = '..\\Output\\amhelib.com.txt'
-    a = read_replace(book_path, 'S', 'Vroom')
-    append(book_path, a)
+    edit(book_path, 'S', 'Vroom')
 
 if __name__ == '__main__':
     main()
