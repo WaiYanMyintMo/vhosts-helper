@@ -48,7 +48,7 @@ def edit_main():
         include_hosts = True
     if include_hosts:
         try:
-            hosts_data = edit_hosts(hosts_path, hosts_template_path, keyword_config, update_type='append', update_option='-')
+            hosts_data = edit_hosts(hosts_path, hosts_template_path, keyword_config, update_type, update_option)
         except PermissionError:
             print("\nHosts file can't be edited because of insufficient permission")
             print("Please re-run this program as administrator, didn't I warn you?")
@@ -56,7 +56,7 @@ def edit_main():
             import sys
             sys.exit()
     if include_vhosts:
-        vhosts_data = edit_vhosts(vhosts_path, vhosts_template_path, keyword_config, update_type='append', update_option='-')
+        vhosts_data = edit_vhosts(vhosts_path, vhosts_template_path, keyword_config, update_type, update_option)
     if saves_to_output:
         output_path = output_path + server_name + '.txt'
         output(output_path, hosts_data)

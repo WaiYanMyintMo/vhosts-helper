@@ -20,8 +20,8 @@ template_config:
   HostsTemplatePath: '..\Config\hosts_template.txt'
   VhostsTemplatePath: '..\Config\vhosts_template.txt'
   EditType : 'append' #don't change this yet too, str type coming soon
-  EditOption : '-' # You may change to '+' now. It is implemented
-  # haha, jk. I disabled it so changing it is useless. I don't trust you
+  EditOption : '+' # You may change to '+' now. It is implemented
+  #These two options are enabled. With great power comes great responsibilities
   #For append type, use '-' for bottom, '+' for top
   #For string type, use '-' to insert below, '+' for above
 ...
