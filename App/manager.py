@@ -36,15 +36,15 @@ def edit_main():
     hosts_path, vhosts_path, edit_includes, saves_to_output, output_path, server_name = get_editor_config()
 
     keyword_config = get_keyword_config()
-
+    include_hosts, include_vhosts = False, False
     # Logic for selection
     if edit_includes.title() == 'Both':
-        include_vhosts = True
         include_hosts = True
-    elif edit_includes.title() == 'Vhosts':
         include_vhosts = True
     elif edit_includes.title() == 'Hosts':
         include_hosts = True
+    elif edit_includes.title() == 'Vhosts':
+        include_vhosts = True
     if include_hosts:
         try:
             hosts_data = edit_hosts(hosts_path, hosts_template_path, keyword_config, update_type, update_option)
@@ -58,9 +58,20 @@ def edit_main():
         vhosts_data = edit_vhosts(vhosts_path, vhosts_template_path, keyword_config, update_type, update_option)
     if saves_to_output:
         output_path = output_path + server_name + '.txt'
-        output(output_path, hosts_data)
-        edit_low(output_path, vhosts_data)
-        return hosts_data, vhosts_data
+        if include_hosts == True and include_vhosts:
+            hosts_data = '\n' + hosts_data
+            vhosts_data = '\n' + vhosts_data
+            output(output_path, hosts_data)
+            edit_low(output_path, vhosts_data)
+            return hosts_data, vhosts_data
+        elif include_hosts:
+            hosts_data = '\n' + hosts_data
+            output(output_path, hosts_data)
+            return hosts_data
+        elif include_vhosts:
+            vhosts_data = '\n' + vhosts_data
+            output(output_path, vhosts_data)
+            return vhosts_data
     else:
         return None
 
