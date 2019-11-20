@@ -10,8 +10,7 @@ from themer import theme
 from editor import edit as edit_low, read, output
 
 
-def edit_hosts(hosts_path: str, hosts_template_path: str, keyword_config: dict,
-               update_type: str = 'append', update_option: str = '-'):
+def edit_hosts(hosts_path: str, hosts_template_path: str, keyword_config: dict, update_type: str, update_option: str):
 
     hosts_template = read(hosts_template_path)
     hosts_data = theme(hosts_template, keyword_config)
@@ -21,7 +20,7 @@ def edit_hosts(hosts_path: str, hosts_template_path: str, keyword_config: dict,
 
 
 def edit_vhosts(vhosts_path :str, vhosts_template_path: str, keyword_config: dict,
-                update_type: str = 'append', update_option: str = '-'):
+                update_type: str, update_option: str):
 
     vhosts_template = read(vhosts_template_path)
     vhosts_data = theme(vhosts_template, keyword_config)
