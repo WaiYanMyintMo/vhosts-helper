@@ -15,7 +15,13 @@ def append(name: str, data: str):
 def edit(path: str, data: str, update_type: str = 'append', update_option: str = '-') -> None:
     if update_type == 'append':
         if update_option == '-':
+            data = '\n' + data
             append(path, data)
+        if update_option == '+':
+            with open(path, 'r+') as f:
+                content = f.read()
+                f.seek(0, 0)
+                f.write(data.rstrip('\r\n') + '\n' + content)
 
 
 def output(path: str, data:str) -> None:
