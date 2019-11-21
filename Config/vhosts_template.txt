@@ -1,8 +1,8 @@
 # Custom apache vhost for SvrName
 <VirtualHost *:PortNumber1>
     ServerName SvrName
-    DocumentRoot Dir1
-    <Directory Dir1>
+    DocumentRoot "Dir1"
+    <Directory "Dir1">
         Options Indexes FollowSymLinks Includes ExecCGI
         AllowOverride All
         Require all granted
