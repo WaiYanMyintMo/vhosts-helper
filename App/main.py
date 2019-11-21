@@ -12,7 +12,11 @@ def start():
     input('And that you have read through the readme.md?')
     print('Program is starting ...')
     data = edit_main()
-    print('\n', data)
+    data1 = data[0]
+    print('\n', data1)
+    if len(data) > 1:
+        data2 = data[1]
+        print(data2)
     print('\nProgram is successfully executed')
     print('No guarantee that program executed successfully')
     input('Press anything to exit the program ...\n')
