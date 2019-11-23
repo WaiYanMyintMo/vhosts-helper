@@ -1,4 +1,5 @@
 from manager import edit_main
+from sys import argv as args
 
 
 def start():
@@ -11,7 +12,11 @@ def start():
     print('\nDo you accept that all responsibilties is solely yours?')
     input('And that you have read through the readme.md?')
     print('Program is starting ...')
-    data = edit_main()
+    if len(args) == 2:
+        arg = args[1]
+    else:
+        arg = ''
+    data = edit_main(arg)
     data1 = data[0]
     print('\n', data1)
     if len(data) > 1:

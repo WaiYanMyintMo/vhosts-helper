@@ -9,10 +9,17 @@ def tryyaml():
 tryyaml()
 import yaml
 
-config_path = '..\\Config\\config.yaml'
+
+def get_config_path(arg) -> str:
+    if arg == '':
+        config_path = '..\\Config\\config.yaml' #default path
+    else:
+        config_path = arg
+    return config_path
 
 
-def get_config() -> dict:
+def get_config(arg) -> dict:
+    config_path = get_config_path(arg)
     try:
         with open(config_path, 'r') as file:
             config = yaml.full_load(file)
@@ -55,8 +62,8 @@ def get_template_config(config: dict) -> dict:
     return template_path
 
 
-def configurer(option: str):
-    config = get_config()
+def configurer(option: str, arg) -> dict:
+    config = get_config(arg)
     if option == 'editor':
         return get_editor_config(config)
     elif option == 'keyword':
@@ -69,8 +76,8 @@ def configurer(option: str):
         raise Exception
 
 
-def get_template_config_matched() -> str:
-    template_config = configurer('template')
+def get_template_config_matched(arg) -> str:
+    template_config = configurer('template', arg)
     hosts_template_path = template_config['HostsTemplatePath']
     vhosts_template_path = template_config['VhostsTemplatePath']
     update_type = template_config['EditType']
@@ -78,8 +85,8 @@ def get_template_config_matched() -> str:
     return hosts_template_path, vhosts_template_path, update_type, update_option
 
 
-def get_editor_config_matched() -> str:
-    editor_config = configurer('editor')
+def get_editor_config_matched(arg) -> str:
+    editor_config = configurer('editor', arg)
     hosts_path = editor_config['HostsPath']
     vhosts_path = editor_config['VhostsPath']
     edit_includes = editor_config['EditIncludes']
@@ -89,8 +96,8 @@ def get_editor_config_matched() -> str:
     return hosts_path, vhosts_path, edit_includes, saves_to_output, output_path, server_name
 
 
-def get_keyword_config_matched() -> dict:
-    keyword_config = configurer('keyword')
+def get_keyword_config_matched(arg) -> dict:
+    keyword_config = configurer('keyword', arg)
     return keyword_config
 
 
