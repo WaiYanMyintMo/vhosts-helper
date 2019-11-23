@@ -18,9 +18,10 @@ def edit(path: str, data: str, edit_type: str = 'append', edit_option: str = '-'
             data = '\n' + data
             append(path, data)
         elif edit_option == '+':
-            with open(path, 'r') as fr, open(path, 'w') as fw:
+            with open(path, 'r') as fr:
                 old_data = fr.read()
-                fw.write(data)
+                with open(path, 'w') as fw:
+                    fw.write(data)
                 edit(path, old_data)
     else:
         with open(path, 'r') as fr:
