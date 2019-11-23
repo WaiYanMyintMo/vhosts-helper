@@ -29,13 +29,13 @@ def edit_vhosts(vhosts_path :str, vhosts_template_path: str, keyword_config: dic
     return vhosts_data
 
 
-def edit_main():
+def edit_main(arg):
     # Get data from config
-    hosts_template_path, vhosts_template_path, edit_type, edit_option = get_template_config()
+    hosts_template_path, vhosts_template_path, edit_type, edit_option = get_template_config(arg)
 
-    hosts_path, vhosts_path, edit_includes, saves_to_output, output_path, server_name = get_editor_config()
+    hosts_path, vhosts_path, edit_includes, saves_to_output, output_path, server_name = get_editor_config(arg)
 
-    keyword_config = get_keyword_config()
+    keyword_config = get_keyword_config(arg)
     include_hosts, include_vhosts = False, False
     # Logic for selection
     if edit_includes.title() == 'Both':
