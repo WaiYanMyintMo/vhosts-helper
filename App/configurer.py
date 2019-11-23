@@ -1,4 +1,18 @@
-import yaml
+def install_and_import(package: str, package_installer: str = ''):
+    if package_installer == '':
+        package_installer = package
+    import importlib
+    try:
+        importlib.import_module(package)
+    except ImportError:
+        import pip
+        pip.main(['install', package_installer])
+    finally:
+        globals()[package] = importlib.import_module(package)
+
+
+install_and_import('yaml', 'pyyaml')
+
 config_path = '..\\Config\\config.yaml'
 
 
