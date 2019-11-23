@@ -1,17 +1,13 @@
-def install_and_import(package: str, package_installer: str = ''):
-    if package_installer == '':
-        package_installer = package
-    import importlib
+def tryyaml():
     try:
-        importlib.import_module(package)
+        import yaml
     except ImportError:
-        import pip
-        pip.main(['install', package_installer])
-    finally:
-        globals()[package] = importlib.import_module(package)
+        import os
+        os.system("pip install pyyaml")
 
 
-install_and_import('yaml', 'pyyaml')
+tryyaml()
+import yaml
 
 config_path = '..\\Config\\config.yaml'
 
