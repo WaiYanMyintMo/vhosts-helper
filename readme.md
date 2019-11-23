@@ -33,6 +33,7 @@ Extract the downloaded folder if zipped file.
 Next, go inside the 'app' folder.
 
 Run main.exe / main.py as administrator
+//There is one command line argument, and it is for path of config.yaml
 
 **NOTE:** You might want to configure your inputs in config first, read **Config** section below
 ## Config
@@ -107,8 +108,13 @@ This section assumes more familiarity with computers and will shorten the descri
   
   You can choose either above the matched string or below with EditOption '+' and '-' respectively.
   
-  If string is not found it will behave as if you chose 'append' type instead. Meaning if EditOption is '+', the data will be inserted at the top of the file.
-  
+  If string is not found it will behave as if you chose 'append' type instead. Meaning if EditOption was '+', the data will be inserted at the top of the file.
+  ### META CONFIGURATIONS
+  Hey, I tried as much as possible to put all configurations in the config file. The ONLY hard-coded one is config_path, which is needed to find the config file. You can change it in configurer.py file if you are using the python version. If you are using an e
+
+ Don't be sad.... It is available as a command line argument!
+ 
+  main.exe PATH\TO\CONFIG.YAML and that's it! Relative path is supported.
   ### Uninportant Configurations
   *In editor_config:*
   
@@ -124,7 +130,7 @@ This section assumes more familiarity with computers and will shorten the descri
 
 ## Template
 
-The program features a very basic templating engine. Here's how it work
+The program features a very basic templating engine. Here's how it works
 
 * You have a template file, with keywords.
 * You tell the program what keywords you used, and what values to replace it with
@@ -171,3 +177,11 @@ What happened? By using $ sign, you are telling it to -
 I see you are reading this. That means you have read through all the features of this program. I also urge you to read config.yaml file's comments as there are more concise, incomplete, and badly worded examples and explanations.
 
 Please ask me for more features, or tell me about problems you have. I will fix them all, depending on conditions. Thank you
+
+## FAQ (Frequently Asked Questions)
+**Will this be available on PyPi?**
+
+-If anyone makes a request, yes. I will have to remove print statements and make it more module like than app like. I don't know how I will maintain both versions at once.
+
+**How can I help contribute? (with documentation, faq, code, guidance, etc.)**
+-Please contact me through github or some sort.
