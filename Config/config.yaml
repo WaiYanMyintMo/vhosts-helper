@@ -19,7 +19,7 @@ editor_config: # All must be strings so use the quotes
 template_config:
   HostsTemplatePath: '..\Config\hosts_template.txt'
   VhostsTemplatePath: '..\Config\vhosts_template.txt'
-  EditType : 'append' #don't change this yet too, str type coming soon
+  EditType : 'xampp' #You can change this to any string you want to be matched
   EditOption : '-' # You may change to '+' now. It is implemented
   #These two options are enabled. With great power comes great responsibilities
   #For append type, use '-' for bottom, '+' for top

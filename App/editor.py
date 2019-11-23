@@ -17,11 +17,36 @@ def edit(path: str, data: str, update_type: str = 'append', update_option: str =
         if update_option == '-':
             data = '\n' + data
             append(path, data)
-        if update_option == '+':
-            with open(path, 'r+') as f:
-                content = f.read()
-                f.seek(0, 0)
-                f.write(data.rstrip('\r\n') + '\n' + content)
+        elif update_option == '+':
+            with open(path, 'r') as fr, open(path, 'w') as fw:
+                old_data = fr.read()
+                fw.write(data)
+                edit(path, old_data)
+    else:
+        with open(path, 'r') as fr:
+            found = False
+            fr_lines = fr.readlines()
+            if update_option == '-':
+                with open(path, "w") as fw:
+                    print(fr_lines, 'fr')
+                    for line in fr_lines:
+                        fw.write(line)
+                        if update_type in line:
+                            found = True
+                            fw.write(data + "\n")
+            elif update_option == '+':
+                with open(path, "w") as fw:
+                    for line in fr_lines:
+                        if update_type in line:
+                            found = True
+                            fw.write(data + "\n")
+                        fw.write(line)
+            print(found, 'found')
+            if not found:
+                edit(path, data)
+                # content = f.read()
+                # f.seek(0, 0)
+                # f.write(data.rstrip('\r\n') + '\n' + content)
 
 
 def output(path: str, data:str) -> None:
