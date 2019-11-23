@@ -23,20 +23,25 @@ def edit(path: str, data: str, update_type: str = 'append', update_option: str =
                 fw.write(data)
                 edit(path, old_data)
     else:
-        with open(path, 'r') as fr, open(path, "w") as fw:
+        with open(path, 'r') as fr:
             found = False
+            fr_lines = fr.readlines()
             if update_option == '-':
-                for line in fr:
-                    fw.write(line)
-                    if update_type in line:
-                        found = True
-                        fw.write(data + "\n")
-            elif update_option == '-':
-                for line in fr:
-                    if update_type in line:
-                        found = True
-                        fw.write(data + "\n")
-                    fw.write(line)
+                with open(path, "w") as fw:
+                    print(fr_lines, 'fr')
+                    for line in fr_lines:
+                        fw.write(line)
+                        if update_type in line:
+                            found = True
+                            fw.write(data + "\n")
+            elif update_option == '+':
+                with open(path, "w") as fw:
+                    for line in fr_lines:
+                        if update_type in line:
+                            found = True
+                            fw.write(data + "\n")
+                        fw.write(line)
+            print(found, 'found')
             if not found:
                 edit(path, data)
                 # content = f.read()
