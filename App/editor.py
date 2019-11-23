@@ -28,7 +28,6 @@ def edit(path: str, data: str, update_type: str = 'append', update_option: str =
             fr_lines = fr.readlines()
             if update_option == '-':
                 with open(path, "w") as fw:
-                    print(fr_lines, 'fr')
                     for line in fr_lines:
                         fw.write(line)
                         if update_type in line:
@@ -41,7 +40,6 @@ def edit(path: str, data: str, update_type: str = 'append', update_option: str =
                             found = True
                             fw.write(data + "\n")
                         fw.write(line)
-            print(found, 'found')
             if not found:
                 edit(path, data)
                 # content = f.read()
