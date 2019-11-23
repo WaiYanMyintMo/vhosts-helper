@@ -12,12 +12,12 @@ def append(name: str, data: str):
         book.write(data)
 
 
-def edit(path: str, data: str, update_type: str = 'append', update_option: str = '-') -> None:
-    if update_type == 'append':
-        if update_option == '-':
+def edit(path: str, data: str, edit_type: str = 'append', edit_option: str = '-') -> None:
+    if edit_type == 'append':
+        if edit_option == '-':
             data = '\n' + data
             append(path, data)
-        elif update_option == '+':
+        elif edit_option == '+':
             with open(path, 'r') as fr, open(path, 'w') as fw:
                 old_data = fr.read()
                 fw.write(data)
@@ -26,22 +26,22 @@ def edit(path: str, data: str, update_type: str = 'append', update_option: str =
         with open(path, 'r') as fr:
             found = False
             fr_lines = fr.readlines()
-            if update_option == '-':
+            if edit_option == '-':
                 with open(path, "w") as fw:
                     for line in fr_lines:
                         fw.write(line)
-                        if update_type in line:
+                        if edit_type in line:
                             found = True
                             fw.write(data + "\n")
-            elif update_option == '+':
+            elif edit_option == '+':
                 with open(path, "w") as fw:
                     for line in fr_lines:
-                        if update_type in line:
+                        if edit_type in line:
                             found = True
                             fw.write(data + "\n")
                         fw.write(line)
             if not found:
-                edit(path, data)
+                edit(path, data, edit_option=edit_option)
                 # content = f.read()
                 # f.seek(0, 0)
                 # f.write(data.rstrip('\r\n') + '\n' + content)
