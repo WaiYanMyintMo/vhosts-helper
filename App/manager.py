@@ -1,8 +1,7 @@
-# //Must Have Outline
-# Host and Vhost assigned at top of file.
-# Server Name and DocumentRoot assigned at top of file.
-# Function for opening file, reading and returning replaced data.
-# Function for appending data to a file.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
 from configurer import get_keyword_config_matched as get_keyword_config
 from configurer import get_editor_config_matched as get_editor_config
 from configurer import get_template_config_matched as get_template_config
